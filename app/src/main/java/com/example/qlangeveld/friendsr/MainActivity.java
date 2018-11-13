@@ -1,10 +1,14 @@
 package com.example.qlangeveld.friendsr;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -43,10 +47,21 @@ public class MainActivity extends AppCompatActivity {
 
         GridView gridView = findViewById(R.id.GridView);
         gridView.setAdapter(friendsAdapter);
+
+        gridView.setOnClickListener(new GridItemClickListener());
+
     }
 
     public void goToProfile(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
+    }
+
+    private class GridItemClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            Friend clickedFriend = (Friend) adapterView.getItemAtPosition(i);
+        }
     }
 }
