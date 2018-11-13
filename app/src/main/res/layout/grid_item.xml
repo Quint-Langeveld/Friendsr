@@ -8,6 +8,7 @@
         android:id="@+id/photo"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
         android:cropToPadding="false"
         android:padding="12dp"
         app:srcCompat="@drawable/arya" />
@@ -16,6 +17,9 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="10dp"
         android:text="TextView"
         android:textSize="22sp"
         android:textStyle="bold" />

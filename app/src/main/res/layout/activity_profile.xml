@@ -8,15 +8,18 @@
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/arya"
+        android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="2"
         android:src="@drawable/arya" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="-5"
+        android:width="1dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="Aya"
         android:textSize="24sp"
@@ -28,13 +31,16 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
+        android:layout_weight="-1"
         android:numStars="5"
-        android:stepSize="1" />
+        android:onClick="saveToSharedPrefs"
+        android:stepSize="0.25" />
 
     <TextView
         android:id="@+id/bio"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="50"
         android:fontFamily="serif"
         android:gravity="center_vertical|center_horizontal"
         android:paddingLeft="40dp"

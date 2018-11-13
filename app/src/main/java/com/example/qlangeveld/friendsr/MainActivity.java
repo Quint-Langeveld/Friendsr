@@ -48,20 +48,20 @@ public class MainActivity extends AppCompatActivity {
         GridView gridView = findViewById(R.id.GridView);
         gridView.setAdapter(friendsAdapter);
 
-        gridView.setOnClickListener(new GridItemClickListener());
-
+        gridView.setOnItemClickListener(new GridItemClickListener());
     }
 
-    public void goToProfile(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
-    }
 
-    private class GridItemClickListener implements View.OnClickListener {
-
+    private class GridItemClickListener implements AdapterView.OnItemClickListener {
         @Override
-        public void onClick(View v) {
-            Friend clickedFriend = (Friend) adapterView.getItemAtPosition(i);
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Friend clickedFriend = (Friend) parent.getItemAtPosition(position);
+
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            intent.putExtra("clicked_friend", clickedFriend);
+            startActivity(intent);
         }
     }
+
+
 }
