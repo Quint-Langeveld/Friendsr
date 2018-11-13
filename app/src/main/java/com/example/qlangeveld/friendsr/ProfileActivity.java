@@ -31,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
         photo.setImageResource(retrievedFriend.getDrawableId());
 
         RatingBar ratingBar = findViewById(R.id.ratingBar);
-        if (retrievedFriend.getRating() > 0.01) {
+        if (retrievedFriend.getRating() > 0) {
             ratingBar.setRating(retrievedFriend.getRating());
         }
 
@@ -41,10 +41,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void saveToSharedPrefs(View view) {
 
-        RatingBar ratingBar = findViewById(R.id.ratingBar);
-        float rating = ratingBar.getRating(); ;
+        RatingBar ratingBar = view.findViewById(R.id.ratingBar);
+        float rating = ratingBar.getRating();
 
-        SharedPreferences prefs = this.getSharedPreferences("settings", MODE_PRIVATE);
+        ratingBar.setRating(rating);
+
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putFloat("newRating", rating);

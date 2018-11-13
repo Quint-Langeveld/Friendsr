@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Friend jorah = new Friend("Jorah", "I wouldn't be here if I hadn't. I return to your srvice, my queen, if you'll have me", R.drawable.jorah);
         Friend margaery = new Friend("Margaery", "I've had lots of time to think about how good I was at seeming good", R.drawable.margaery);
         Friend melisandre = new Friend("Melisandre", "The night is dark and full of terrors", R.drawable.melisandre);
-        Friend sansa = new Friend("Sansa", "I did what I had to do to survive, my lady. But I am a Stark, I will always be a Stark.", R.drawable.melisandre);
+        Friend sansa = new Friend("Sansa", "I did what I had to do to survive, my lady. But I am a Stark, I will always be a Stark.", R.drawable.sansa);
         Friend tyrion = new Friend("Tyrion", "I'm guilty of a far more monstrous crime: I'm guilty of being a dwarf!", R.drawable.tyrion);
 
         friends.add(arya);
