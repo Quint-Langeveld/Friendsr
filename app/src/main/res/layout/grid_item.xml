@@ -6,20 +6,19 @@
 
     <ImageView
         android:id="@+id/photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="265dp"
+        android:layout_height="236dp"
+        android:layout_gravity="center"
         android:cropToPadding="false"
-        android:padding="12dp"
         app:srcCompat="@drawable/arya" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
         android:gravity="center_horizontal"
-        android:paddingLeft="10dp"
         android:text="TextView"
         android:textSize="22sp"
         android:textStyle="bold" />
