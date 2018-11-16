@@ -32,7 +32,4 @@ public class FriendsAdapter extends ArrayAdapter<Friend> {
         ((TextView) convertView.findViewById(R.id.name)).setText(current_friend.getName());
         return convertView;
     }
-
-
-
 }

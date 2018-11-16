@@ -12,6 +12,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class ProfileActivity extends AppCompatActivity {
+    Friend retrievedFriend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         Intent intent = getIntent();
-        Friend retrievedFriend = (Friend) intent.getSerializableExtra("clicked_friend");
+        retrievedFriend = (Friend) intent.getSerializableExtra("clicked_friend");
 
         TextView name = findViewById(R.id.name);
         name.setText(retrievedFriend.getName());
@@ -34,33 +35,32 @@ public class ProfileActivity extends AppCompatActivity {
         if (retrievedFriend.getRating() > 0) {
             ratingBar.setRating(retrievedFriend.getRating());
         }
-
         loadFromSharedPrefs();
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBarClickListener());
     }
 
-
-    public void saveToSharedPrefs(View view) {
-
-        RatingBar ratingBar = view.findViewById(R.id.ratingBar);
-        float rating = ratingBar.getRating();
-
-        ratingBar.setRating(rating);
-
-        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-
-        editor.putFloat("newRating", rating);
-        editor.commit();
-    }
 
 
     public void loadFromSharedPrefs() {
         SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
-        float newRatingRestored = prefs.getFloat("newRating",0);
+        float newRatingRestored = prefs.getFloat(retrievedFriend.getName(),0);
 
         if (newRatingRestored > 0) {
             RatingBar ratingBar = findViewById(R.id.ratingBar);
             ratingBar.setRating(newRatingRestored);
+        }
+    }
+
+    private class RatingBarClickListener implements RatingBar.OnRatingBarChangeListener {
+        @Override
+        public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+            SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+
+            editor.putFloat(retrievedFriend.getName(), rating);
+            editor.apply();
+            editor.commit();
         }
     }
 
